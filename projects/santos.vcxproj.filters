@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="allocator">
+      <UniqueIdentifier>{5b655f07-08a8-4c2b-9cd4-3815b502fe25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic">
+      <UniqueIdentifier>{8ef8dc09-1626-428b-9400-9790fbe3ee86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="network">
+      <UniqueIdentifier>{1bf41ade-63f9-4df2-b3ec-ca64687dcbc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="network\protocol">
+      <UniqueIdentifier>{15ef8527-8b90-490b-8865-b857bc16cb5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="delegates">
+      <UniqueIdentifier>{eeff172f-e874-44ce-abbe-5da754c69aba}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\allocator\alignment.h">
+      <Filter>allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\allocator\allocator.h">
+      <Filter>allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\allocator\allocator_config.h">
+      <Filter>allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\delegates\delegate.h">
+      <Filter>delegates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\network\protocol\code.h">
+      <Filter>network\protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\network\protocol\packet.h">
+      <Filter>network\protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\network\circular_buffer.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\network\dispatcher.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\network\extractor.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\network\libevent_callback.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\network\session.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\network\network.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\logic\robot_data.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\logic\robot.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\logic\robot_mgr.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="santos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\network\dispatcher.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\network\session.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\network\network.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\logic\robot.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\logic\robot_mgr.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\libevent\libevent_core.lib" />
+    <Library Include="..\libevent\libevent.lib" />
+    <Library Include="..\libevent\libevent_extras.lib" />
+  </ItemGroup>
+</Project>
