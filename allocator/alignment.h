@@ -5,10 +5,7 @@
 #include "allocator_config.h"
 
 namespace Santos{
-
-	// align plus is much too slow than power algorithm
-	// , specially when input len is larger than 1024
-
+	
 	template<int base=ALIGNMENT_BASE16>
 	class AlignPlus{
 	public:
@@ -17,11 +14,11 @@ namespace Santos{
 				return base;
 			}
 
-			char cnt = 0;
-			while (base * ++cnt <= len)
-				;
+			if(0 == len%base){ // already aligned
+				return len;
+			}
 
-			return base * --cnt;
+			return (len-len%base);
 		}
 
 		static short align_high(short len){
@@ -29,11 +26,11 @@ namespace Santos{
 				return base;
 			}
 
-			char cnt = 0;
-			while (base * ++cnt < len)
-				;
+			if(0 == len%base){ // already aligned
+				return len;
+			}
 
-			return base * cnt;
+			return (len-len%base + base);
 		}
 
 		static short step_next(short cur){
@@ -41,32 +38,33 @@ namespace Santos{
 		}
 	};
 
+	template<int base=ALIGNMENT_BASE16>
 	class AlignPower2{
 	public:
 		static short align_low(short len){
-			char cnt = 0;
-			while (len >> ++cnt)
-				;
+			if(len < base)
+				return base;
+			
+			int previous = len;
+			while (len = len & (len-1)){
+				if(len){
+					previous = len;
+				}
+			}
 
-			return 1 << --cnt;
+			return previous;
 		}
 
 		static short align_high(short len){
-			if(1 == len)
-				return 1;
+			if(len < base)
+				return base;
 
-			char non_aligned_cnt = (~len&1) ? 0 : 1;
-			char cnt = 1;
-			while (len = len >> 1){
-				++cnt;
-				non_aligned_cnt += (~len&1) ? 0 : 1;
+			if(len & (len-1) == 0){
+				return len;
 			}
-
-			if(non_aligned_cnt > 1){
-				return 1 << cnt;
+			else{
+				return align_low(len) << 1;
 			}
-
-			return len;
 		}
 
 		static short step_next(short cur){
@@ -94,11 +92,11 @@ namespace Santos{
 
 #ifdef ALIGNMENT_USE_POWER
 #define ALIGN_H(input) \
-	AlignPower2::align_high(input)
+	AlignPower2<ALIGNMENT_BASE16>::align_high(input)
 #define ALIGN_L(input) \
-	AlignPower2::align_low(input)
+	AlignPower2<ALIGNMENT_BASE16>::align_low(input)
 #define STEP_NEXT(input) \
-	AlignPower2::step_next(input)
+	AlignPower2<ALIGNMENT_BASE16>::step_next(input)
 #endif
 
 
